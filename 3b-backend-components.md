@@ -69,7 +69,7 @@ The following classes are available as Fintan components:
 ## Read generic TSV/CSV data
 While CoNLL-RDF in principle does support any kind of TSV data, it is limited to converting it to the CoNLL-RDF data model. Using the Updater this can in principle be transformed into any other data model (e.g. OntoLex-Lemon, as we described for the Universal Morphologies in the previous report D3.2). However, this might not be the most efficient way of converting tabular data beyond the scope of text corpora and tab separated values..
 
-For this reason, Fintan supports an additional way of converting generic TSV data with the TarqlStreamTransformer. This class is implementing a wrapper for the Tarql library which is designed to apply (slightly modified) SPARQL syntax for directly querying tabular input formats. A description of the general syntax and how to write Tarql queries can be found on the Tarql website.
+For this reason, Fintan supports an additional way of converting generic TSV data with the TarqlStreamTransformer. This class is implementing a wrapper for the [Tarql library](https://github.com/tarql/tarql) which is designed to apply (slightly modified) SPARQL syntax for directly querying tabular input formats. A description of the general syntax and how to write Tarql queries can be found on the Tarql website.
 
 For convenience, multiple input and output streams can be supplied to a single Transformer configuration. In this case the data read from one input stream will be transformed and piped out to the output stream of the same name. Furthermore, the Fintan implementation supports segmented stream processing, in a similar way to the RDFUpdater (although not yet parallelized). These two parameters trigger this functionality
 * `delimiterIn` activates the segmented processing, like the delimiter parameters in the core classes, it corresponds to the full text content of a single delimiting line. If it is unspecified or null, the data is processed as bulk.
@@ -86,6 +86,8 @@ query: path to the tarql query. The query must be of `CONSTRUCT` or `DESCRIBE` s
 * `baseIRI`: base IRI for resolving relative IRIs.
 * `write-base`: writes @base for Turtle output.
 * `dedup`: window size in which to remove duplicate triples.
+
+Link to [Original Tarql Documentation](http://tarql.github.io/)
 
 ## XSLT transformation
 The `XSLTStreamTransformer` uses the Saxon HE library to transform XML data using XSL transformation. It is implementing the StreamTransformerGenericIO interface and thus does not directly produce segmented RDF streams. It can be used stand-alone or for preprocessing steps in combination with the Loader or Splitter classes. 
@@ -117,7 +119,29 @@ In addition, the `TBX2RDFStreamLoader` accepts the following parameters:
 * `cachePath`: allows to define a custom path for caching in `bigFile` mode. If unspecified, Fintan's temp folder will be used.
 
 ## Read from SQL databases (still experimental)
-The `SQLStreamtransformer` reads directly from an SQL database. Therefore, *no input stream* can be defined. It accepts an SQL query and writes formated output in customizable C/TSV formats to the *default output stream*, only. 
+The `SQLStreamtransformer` reads directly from an SQL database. Therefore, **no input stream** can be defined. It accepts an SQL query and writes formated output in customizable C/TSV formats to the **default output stream**, only. 
+
+In Fintan's default configuration, only the MySQL JDBC-Connector is active. In order to activate support for other databases, (e.g. postgres, MSSQL, and many other DBs) Fintan's `pom.xml` comes with preconfigured dependency stubs, which you can uncomment as needed. 
+
+Sample stub to **activate postgres** support on the [fintan-backend/pom.xml](https://github.com/acoli-repo/fintan-backend/blob/master/pom.xml):
+
+```
+<!-- remove this comment
+
+		<dependency>
+    		<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+remove this comment and run build.sh again -->
+```
 
 The database connection can be adjusted by the following parameters:
 * `driver` (OPTIONAL) for legacy code in some cases, the JDBC driver must be loaded by a Class.forName("fully.qualified.ClassName") statement. In case of doubt, set this to null.
