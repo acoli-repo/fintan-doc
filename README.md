@@ -29,7 +29,7 @@ The Fintan platform is an effort of combining existing converter frameworks with
 
 ## Authors and Maintainers
 * **Christian Fäth** - faeth@em.uni-frankfurt.de
-* **Christian Chiarcos** - chiarcos@informatik.uni-frankfurt.de
+* **Christian Chiarcos** - christian.chiarcos@uni-a.de
 * **Maxim Ionov** 
 * **Leo Gottfried** 
 
