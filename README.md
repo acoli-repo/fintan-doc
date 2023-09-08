@@ -39,11 +39,11 @@ See also the list of [contributors](https://github.com/acoli-repo/fintan-doc/gra
 Fäth C., Chiarcos C., Ebbrecht B., Ionov M. (2020), Fintan - Flexible, Integrated Transformation and Annotation eNgineering. In: Proceedings of the 12th Language Resources and Evaluation Conference. LREC 2020. pp 7212-7221.
 
 ## Acknowledgments
-This repository has been created in context of
-* Applied Computational Linguistics ([ACoLi](http://acoli.cs.uni-frankfurt.de))
-* Prêt-á-LLOD. Ready-to-use Multilingual Linked Language Data for Knowledge Services across Sectors ([Pret-a-LLOD](https://cordis.europa.eu/project/id/825182/results))
-  * Research and Innovation Action of the H2020 programme (ERC, grant agreement 825182)
-  * In this project, [CoNLL-RDF](https://github.com/acoli-repo/conll-rdf) has been applied/developed/restructured to serve as backend of the Flexible Integrated Transformation and Annotation Engineering ([FINTAN](https://github.com/Pret-a-LLOD/Fintan)) Platform.
+This repository has been developed 
+* by the [Applied Computational Linguistics (ACoLi)](http://acoli.cs.uni-frankfurt.de)) Lab at Goethe-University Frankfurt, Germany 
+* in the project [Prêt-á-LLOD. Ready-to-use Multilingual Linked Language Data for Knowledge Services across Sectors](https://cordis.europa.eu/project/id/825182/results), Research and Innovation Action of the H2020 programme (ERC, grant agreement 825182, 2019-2022)
+
+In the Prêt-à-LLOD project, the earlier [CoNLL-RDF library](https://github.com/acoli-repo/conll-rdf) has been extended as the basis for the backend of the Flexible Integrated Transformation and Annotation Engineering ([FINTAN](https://github.com/Pret-a-LLOD/Fintan)) Platform. Subsequently, CoNLL-RDF has been revised into a Fintan customization.
 
 ## Licenses
 The repositories for Fintan are being published under multiple licenses. All native code and documentation falls under an Apache 2.0 license. [LICENSE.main](LICENSE.main.txt). The examples in the backend repository contain data and some SPARQL scripts from external sources: CC-BY 4.0 for all data from universal dependencies and SPARQL scripts from the CoNLL-RDF repository, see [LICENSE.data](LICENSE.data.txt). The included Apertium data maintains its original copyright, i.e., GNU GPL 3.0, see [LICENSE.data.apertium](LICENSE.data.apertium.txt). Code from external dependencies and submodules is not redistributed with this package but fetched directly from the respective source repositories during build process and thus adheres to the respective Licenses. 
